@@ -54,7 +54,7 @@ function checkWinner(tiles , setStrikeClass , setGameState)
         setGameState(GameState.draw);
     }
 }
-
+//función principal
 function TicTacToe()
 {
     const [tiles, setTiles] = useState(Array(9).fill(null));
