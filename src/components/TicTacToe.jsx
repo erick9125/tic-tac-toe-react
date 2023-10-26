@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Board from "./Board";
+import GameOver from "./GameOver";
+import GameState from "./GameState";
 
 const PLAYER_X = "X";
 const PLAYER_O = "O";
@@ -11,16 +13,16 @@ const winningCombinations = [
     {combo: [6,7,8],strikeClass:"strike-row-3"},
 
     //colums
-    {combo: [0,3,6],strikeClass:"strike-colum-1"},
-    {combo: [1,4,7],strikeClass:"strike-colum-2"},
-    {combo: [2,5,8],strikeClass:"strike-colum-3"},
+    {combo: [0,3,6],strikeClass:"strike-column-1"},
+    {combo: [1,4,7],strikeClass:"strike-column-2"},
+    {combo: [2,5,8],strikeClass:"strike-column-3"},
 
     //diagonals
     {combo: [0,4,8],strikeClass:"strike-diagonal-1"},
     {combo: [2,4,6],strikeClass:"strike-diagonal-2"},
 ];
 
-function checkWinner(tiles , setStrikeClass)
+function checkWinner(tiles , setStrikeClass , setGameState)
 {
     for(const {combo, strikeClass} of winningCombinations){
         const tileValue1 = tiles[combo[0]];
@@ -29,7 +31,19 @@ function checkWinner(tiles , setStrikeClass)
 
         if(tileValue1 !== null && tileValue1 === tileValue2 && tileValue1 === tileValue3){
             setStrikeClass(strikeClass);
+            if(tileValue1 === PLAYER_X){
+                setGameState(GameState.playerXWins);
+            }else {
+                setGameState(GameState.playerOWins);
+            }
+            return;
         }
+    }
+
+    const areAllTilesFilledIn = tiles.every((tile) => tile !== null);
+    if(areAllTilesFilledIn)
+    {
+        setGameState(GameState.draw);
     }
 }
 
@@ -38,12 +52,18 @@ function TicTacToe()
     const [tiles, setTiles] = useState(Array(9).fill(null));
     const [playerTurn, setPlayerTurn] = useState(PLAYER_X);
     const [strikeClass, setStrikeClass] = useState();
+    const [gameState, setGameState] = useState(GameState.inProgress);
 
     useEffect(() => {
-        checkWinner(tiles, setStrikeClass);
+        checkWinner(tiles, setStrikeClass, setGameState);
     });
 
     const handleTileClick = (index) => {
+
+        if(gameState !== GameState.inProgress)
+        {
+            return;
+        }
 
         if(tiles[index] !== null)
         {
@@ -65,6 +85,7 @@ function TicTacToe()
         <div>
             <h1>Tic Tac Toe</h1>
             <Board playerTurn={playerTurn} tiles={tiles} onTileClick={handleTileClick} strikeClass={strikeClass} />
+            <GameOver gameState={gameState} />
         </div>
     );
 }
