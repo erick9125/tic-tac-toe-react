@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.0488523f.css",
-    "main.js": "/static/js/main.e59e03a7.js",
-    "static/js/787.393238a3.chunk.js": "/static/js/787.393238a3.chunk.js",
-    "static/media/game_over.wav": "/static/media/game_over.3894918f7585f9300350.wav",
-    "static/media/click.wav": "/static/media/click.450b31dca5ff2247781d.wav",
-    "index.html": "/index.html",
-    "main.0488523f.css.map": "/static/css/main.0488523f.css.map",
-    "main.e59e03a7.js.map": "/static/js/main.e59e03a7.js.map",
-    "787.393238a3.chunk.js.map": "/static/js/787.393238a3.chunk.js.map"
+    "main.css": "/tic-tac-toe-react/static/css/main.0488523f.css",
+    "main.js": "/tic-tac-toe-react/static/js/main.cd0c2db4.js",
+    "static/js/787.393238a3.chunk.js": "/tic-tac-toe-react/static/js/787.393238a3.chunk.js",
+    "static/media/game_over.wav": "/tic-tac-toe-react/static/media/game_over.3894918f7585f9300350.wav",
+    "static/media/click.wav": "/tic-tac-toe-react/static/media/click.450b31dca5ff2247781d.wav",
+    "index.html": "/tic-tac-toe-react/index.html",
+    "main.0488523f.css.map": "/tic-tac-toe-react/static/css/main.0488523f.css.map",
+    "main.cd0c2db4.js.map": "/tic-tac-toe-react/static/js/main.cd0c2db4.js.map",
+    "787.393238a3.chunk.js.map": "/tic-tac-toe-react/static/js/787.393238a3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0488523f.css",
-    "static/js/main.e59e03a7.js"
+    "static/js/main.cd0c2db4.js"
   ]
 }
